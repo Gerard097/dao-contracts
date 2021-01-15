@@ -283,8 +283,9 @@ namespace hypha
          ContentWrapper::insertOrReplace(settingsGroup, updateDateContent);
          m_documentGraph.updateDocument(get_self(), oldHash, std::move(contentGroups));
       }
-      //Should we assert if setting doesn't exits ?
-      eosio::check(false, "The specified setting does not exist: " + key);
+      else {
+         eosio::check(false, "The specified setting does not exist: " + key);
+      }
    }
 
    void dao::addperiod(const eosio::checksum256 &predecessor, const eosio::time_point &start_time, const string &label)
